@@ -1,0 +1,18 @@
+<h1> Hey {{passenger.firstName}} , Welcome to ViT AiRLiNES </h1>
+<br />
+<br />
+<p>
+  ID : {{passenger.id}}<br /><br />
+  First Name : {{passenger.firstName}}<br />
+  Middle Name : {{passenger.middleName}}<br />
+  Last Name : {{passenger.lastName}}<br /><br />
+  Age : {{passenger.age}}<br />
+  Sex : {{passenger.sex}}<br /><br />
+  Phone : {{passenger.phone}}<br />
+</p>
+
+<a href="/ticketing/{{passenger.id}}/ticket/">Tickets Info</a>
+<p></p>
+<a href="/ticketing/{{passenger.id}}/book/">Book Ticket</a>
+<p></p>
+<a href="http://127.0.0.1:8000/ticketing/" + id + "/">Click here to go home</a>

@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 from django.db import models
 
+from datetime import datetime
+
 class Passenger(models.Model):
     id=models.IntegerField(primary_key=True)
     age=models.IntegerField()
@@ -11,26 +13,26 @@ class Passenger(models.Model):
     phone=models.CharField(max_length=10)
 
     def __str__(self):
-        return self.firstName + " " + self.lastName + " (" + self.id.toString() + ")"
+        return self.firstName + " " + self.lastName + " (" + str(self.id) + ")"
 
 class Ticket(models.Model):
     id=models.IntegerField(primary_key=True)
     price=models.IntegerField()
     source=models.CharField(max_length=30)
     destination=models.CharField(max_length=30)
-    time=models.DateTimeField('date booked')
+    time=models.DateTimeField(default=datetime.now)
     _class=models.CharField(max_length=20)
     passenger=models.ForeignKey(Passenger, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.source + " " + self.destination + " (" + self.id.toString() + ")"
+        return self.source + " " + self.destination + " (" + str(self.id) + ")"
 
 class Book(models.Model):
     dateOfBooking=models.DateTimeField('date booked')
     GSTNumber=models.IntegerField(default=0)
     passenger=models.ForeignKey(Passenger, on_delete=models.CASCADE)
     def __str__(self):
-        return passenger.firstName + " with id " + passenger.id.toString() + " booked the ticket"
+        return passenger.firstName + " with id " + str(passenger.id) + " booked the ticket"
 
 class Cancel(models.Model):
     GSTNumber=models.IntegerField(default=0)
@@ -38,7 +40,7 @@ class Cancel(models.Model):
     date=models.DateTimeField('date cancelled')
 
     def __str__(self):
-        return cancellor.firstName + " with id " + cancellor.id.toString() + " cancelled the ticket"
+        return cancellor.firstName + " with id " + str(cancellor.id) + " cancelled the ticket"
 
 
 class Flight(models.Model):
@@ -59,7 +61,7 @@ class Airline(models.Model):
     code=models.CharField(max_length=10)
 
     def __str__(self):
-        return self.airlineName + " (" + self.airlineId.toString() + ")"
+        return self.airlineName + " (" + str(self.airlineId) + ")"
 
 
 
@@ -71,7 +73,7 @@ class Airport(models.Model):
     id=models.IntegerField(primary_key=True)
 
     def __str__(self):
-        return self.name + " (" + self.id.toString() + ")"
+        return self.name + " (" + str(self.id) + ")"
 
 class Employee(models.Model):
     SSN=models.IntegerField(primary_key=True)
@@ -86,4 +88,4 @@ class Employee(models.Model):
     jobType=models.CharField(max_length=10)
 
     def __str__(self):
-        return self.firstName + " " + self.lastName + " (" + self.SSN.toString() + ")"
+        return self.firstName + " " + self.lastName + " (" + str(self.SSN) + ")"

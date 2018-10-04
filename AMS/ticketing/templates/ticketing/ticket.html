@@ -1,0 +1,28 @@
+{% if ticket %}
+  <ul>
+    {% for info in ticket %}
+      <li>
+        <p>
+          Source : {{info.source}} <br />
+          Destination : {{info.destination}} <br />
+          id : {{info.id}} <br />
+          Time : 12:30 <br />
+          Passenger ID : {{info.passenger.id}} <br />
+          Passenger Name : {{info.passenger.FirstName}} <br />
+        </p>
+        <a href="/ticketing/{{info.id}}/cancel/">
+        Click Here to Cancel
+      </a>
+      </li>
+    {% endfor %}
+  </ul>
+  <h3> Click on ticket to cancel</h3>
+{% else %}
+  <p>No Tickets Booked.</p>
+  <a href="http://127.0.0.1:8000/ticketing/{{id}}/book/"
+{% endif %}
+
+<p></p>
+<form>
+  <input type="button" value="Go back!" onclick="history.go(-1)">
+</form>
