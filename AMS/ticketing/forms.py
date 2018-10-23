@@ -1,7 +1,7 @@
 from django import forms
 
 class PassengerLogin(forms.Form):
-    id = forms.IntegerField(label='id')
+    id = forms.IntegerField(label='ID')
     name = forms.CharField(label='First Name')
 
 class BookTicket(forms.Form):
