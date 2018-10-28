@@ -1,4 +1,3 @@
-
 {% load staticfiles %}
 
 <!doctype html>
@@ -10,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>VIT AIRLINES LLC</title>
+    <title>FLIGHT</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{%static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -26,56 +25,52 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <div class="container">
-
-          {% block content %}
-          <h1 class="display-3">Hey {{employee.firstName}} {{employee.lastName}}, </h1>
           <h1 class="display-3">Welcome to VIT AIRLINES </h1>
-          <h1> </h1>
-          <br />
-          <br />
-          <p>
-
-            <h4>First Name : {{employee.firstName}} </h6>
-            <br />
-            <h4>Last Name : {{employee.lastName}} </h6>
-            <br />
-            <h4 >SSN : {{employee.SSN}} </h6>
-            <br />
-            <h4 >Sex : {{employee.sex}}</h6>
-            <br />
-            <h4 >Age : {{employee.age}}</h6>
-            <br />
-            <h4 >Phone : {{employee.phone}} </h6>
-            <br />
-            <h4 >Address : {{employee.address}} </h6>
-            <br />
-            <h4 >Salary : {{employee.salary}} </h6>
-            <br />
-            <h4 >Job Type : {{employee.jobType}} </h6>
-            <br />
-          </p>
-
-          <form>
-            <input type="button" value="Go back!" onclick="history.go(-1)">
-          </form>
-
-          <br />
-          <br />
-
-          <p><a class="btn btn-primary btn-lg" href="http://127.0.0.1:8000/ticketing/flight/" role="button">Click here for Flight Details</a></p>
-
-          {% endblock %}
-
         </div>
       </div>
-        <hr>
 
-      </div> <!-- /container -->
+      {% if ticket %}
+        <ul>
+          {% for info in flight %}
+          <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+              <div class="col-md-4">
+                <li>
+                  <p>
+                    Source : {{info.source}} <br />
+                    Destination : {{info.destination}} <br />
+                    Flight Code : {{info.flightCode}}<br />
+                    TYPE : {{info.type}} <br />
+                  </p>
+                    <p><a class="btn btn-secondary" href="/ticketing/{{info.id}}/cancel/" role="button">CANCEL</a></p>
+                </a>
+                </li>
+              </div>
+            </div>
+
+            <hr>
+
+          </div> <!-- /container -->
+          {% endfor %}
+        </ul>
+        <h3> Click on ticket to cancel</h3>
+      {% else %}
+        <p>No Flights to show</p>
+        <a href="http://127.0.0.1:8000/ticketing/"
+      {% endif %}
+
+      <p></p>
+      <form>
+        <input type="button" value="Go back!" onclick="history.go(-1)">
+      </form>
+
+
 
     </main>
 
     <footer class="container">
-      <p>&copy; VIT Airlines Pvt Ltd 2017-2018</p>
+      <p>&copy; Company 2017-2018</p>
     </footer>
 
     <!-- Bootstrap core JavaScript

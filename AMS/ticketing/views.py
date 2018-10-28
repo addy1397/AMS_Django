@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 
 from .forms import PassengerLogin,BookTicket,EmployeeLogin
-from .models import Passenger,Ticket,Employee
+from .models import Passenger,Ticket,Employee,Flight
 from random import randint
 
 def index(request):
@@ -63,3 +63,7 @@ def employee(request):
         employee = Employee.objects.get(firstName=name)
         return render(request, 'ticketing/employeeDetail.html', {'employee':employee})
     return render(request, 'ticketing/employee.html', {'form':form})
+
+def flight(request):
+    temp=Flight.objects.all()
+    return render(request, 'ticketing/flight.html',{'flight':temp})

@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^(?P<id>[0-9]+)/cancel/$', views.cancel, name='cancel'),
     url(r'^(?P<id>[0-9]+)/book/$', views.book, name='book'),
     url(r'^employee/$', views.employee, name='employee'),
+    url(r'^flight/$', views.flight, name='flight'),
 ]
