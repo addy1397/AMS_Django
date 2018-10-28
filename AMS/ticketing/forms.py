@@ -1,8 +1,10 @@
 from django import forms
 
+
 class PassengerLogin(forms.Form):
     id = forms.IntegerField(label='ID')
     name = forms.CharField(label='First Name')
+    password = forms.CharField(widget=forms.PasswordInput)
 
 class BookTicket(forms.Form):
     source=forms.CharField(label='Source')
@@ -15,3 +17,4 @@ class BookTicket(forms.Form):
 
 class EmployeeLogin(forms.Form):
     name = forms.CharField(label='First Name')
+    password = forms.CharField(widget=forms.PasswordInput)
